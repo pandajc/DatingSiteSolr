@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<!-- targetRuntime="MyBatis3"： --><!-- 有复杂查询 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<commentGenerator>
+  		<property name="suppressAllComments" value="true"/>
+  	</commentGenerator>
+  
+  	<!-- 驱动的指定 -->
+    <jdbcConnection 
+    	driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/dating_site"
+        userId="root"
+        password="0987654321">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- javaModelGenerator：java model生成器（bean）
+	targetPackage：目标包
+	targetProject：目标工程
+		.\src
+	 -->
+    <javaModelGenerator 
+     targetPackage="com.atguigu.datingsite.bean"
+     targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- sql映射生成器；sql映射文件mapper.xml文件生成在哪里 -->
+    <sqlMapGenerator 
+    	targetPackage="mybatis.mapper"  
+    	targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- javaClientGenerator：生成dao接口 -->
+    <javaClientGenerator type="XMLMAPPER" 
+    	targetPackage="com.atguigu.datingsite.dao"
+    	targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <!-- table指定要逆向哪些表 ；一个表要逆向成一个javaBean
+    tableName：指定表名
+    domainObjectName：指定对应的javaBean domainObjectName="TUserRole"
+    -->
+
+	<table tableName="t_user"></table>
+
+  </context>
+</generatorConfiguration>

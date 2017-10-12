@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <plugins>
+        <!--
+          reasonable：分页合理化参数，默认值为false。
+          当该参数设置为 true 时，pageNum<=0 时会查询第一页，
+          pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
+           -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+        </plugin>
+
+        <plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
+            <!--================================================-->
+            <!--可配置参数说明(一般无需修改)-->
+            <!--================================================-->
+            <!--UUID生成策略-->
+            <!--配置UUID生成策略需要使用OGNL表达式-->
+            <!--默认值32位长度:@java.util.UUID@randomUUID().toString().replace("-", "")-->
+            <!--<property name="UUID" value="@java.util.UUID@randomUUID().toString()"/>-->
+            <!--主键自增回写方法,默认值MYSQL,详细说明请看文档-->
+            <!--<property name="IDENTITY" value="HSQLDB"/>-->
+            <!--序列的获取规则,使用{num}格式化参数，默认值为{0}.nextval，针对Oracle-->
+            <!--可选参数一共3个，对应0,1,2,分别为SequenceName，ColumnName,PropertyName-->
+            <!--<property name="seqFormat" value="{0}.nextval"/>-->
+            <!--主键自增回写方法执行顺序,默认AFTER,可选值为(BEFORE|AFTER)-->
+            <!--<property name="ORDER" value="AFTER"/>-->
+            <!--通用Mapper接口，多个通用接口用逗号隔开-->
+            <property name="mappers" value="com.github.abel533.mapper.Mapper"/>
+        </plugin>
+
+    </plugins>
+  <!-- 注册TUserMapper接口 -->
+    <!-- TUserMapper接口的全类名 -->
+    <!--<mappers>
+        <mapper class="com.atguigu.datingsite.dao.TUserMapper"/>
+    </mappers>-->
+</configuration>
