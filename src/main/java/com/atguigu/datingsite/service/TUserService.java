@@ -16,5 +16,5 @@ public interface TUserService {
 
     boolean updateUser(TUser tUser);
 
-    TUser login(TUser tUser);
+    TUser getUserByUserNameAndPwd(TUser tUser);
 }

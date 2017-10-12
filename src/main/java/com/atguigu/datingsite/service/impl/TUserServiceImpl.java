@@ -53,7 +53,7 @@ public class TUserServiceImpl implements TUserService{
     }
 
     @Override
-    public TUser login(TUser tUser) {
+    public TUser getUserByUserNameAndPwd(TUser tUser) {
         Example example = new Example(TUser.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("userName", tUser.getUserName())

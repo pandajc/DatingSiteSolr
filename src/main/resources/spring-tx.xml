@@ -22,7 +22,7 @@
     <!--配置事务增强-->
     <aop:config>
         <!--切入点表达式-->
-        <aop:pointcut id="txPoint" expression="execution(* com.atguigu.datingsite..*.*(..))"></aop:pointcut>
+        <aop:pointcut id="txPoint" expression="execution(* com.atguigu.datingsite.service.*.*(..))"></aop:pointcut>
         <!--事务切面和切入点的关系-->
         <aop:advisor advice-ref="myAdvice" pointcut-ref="txPoint"></aop:advisor>
     </aop:config>
@@ -31,6 +31,14 @@
     <tx:advice id="myAdvice">
         <tx:attributes>
             <tx:method name="*"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="update*"
+                       rollback-for="java.lang.Exception" propagation="REQUIRES_NEW"/>
+            <tx:method name="delete*"
+                       rollback-for="java.lang.Exception" propagation="REQUIRES_NEW"/>
+            <tx:method name="save*"
+                       rollback-for="java.lang.Exception" propagation="REQUIRES_NEW"/>
         </tx:attributes>
     </tx:advice>
 
