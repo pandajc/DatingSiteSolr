@@ -86,7 +86,7 @@ public class UserController {
             String name = (String) names.nextElement();
             session.removeAttribute(name);
         }
-        TUser loginUser = tUserService.login(tUser);
+        TUser loginUser = tUserService.getUserByUserNameAndPwd(tUser);
         if (loginUser == null){
             attributes.addFlashAttribute("msg","登录失败，用户名或密码错误！");
             attributes.addFlashAttribute("user",tUser);

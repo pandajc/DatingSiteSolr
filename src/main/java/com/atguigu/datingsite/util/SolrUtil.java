@@ -13,6 +13,9 @@ import org.apache.solr.common.SolrInputDocument;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 搜索功能
+ */
 public class SolrUtil {
 
     private static SolrServer server = new HttpSolrServer("http://192.168.160.210:8080/solr/datingsite_core");
